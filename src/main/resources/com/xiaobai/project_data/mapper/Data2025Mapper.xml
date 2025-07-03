@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xiaobai.project_data.mapper.Data2025Mapper">
+
+    <resultMap id="BaseResultMap" type="com.xiaobai.project_data.domain.Data2025">
+            <id property="id" column="Id" />
+            <result property="gaid" column="gaid" />
+            <result property="model" column="model" />
+            <result property="country" column="country" />
+            <result property="ua" column="UA" />
+            <result property="adtype" column="ADType" />
+            <result property="adcenter" column="ADCenter" />
+            <result property="currencycode" column="currencyCode" />
+            <result property="valuemicros" column="valueMicros" />
+            <result property="precisiontype" column="precisionType" />
+            <result property="detatime" column="detaTime" />
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        Id,gaid,model,country,UA,ADType,
+        ADCenter,currencyCode,valueMicros,precisionType,detaTime
+    </sql>
+</mapper>
