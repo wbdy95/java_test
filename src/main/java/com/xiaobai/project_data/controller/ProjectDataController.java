@@ -43,27 +43,40 @@ public class ProjectDataController {
     /**
      * 查询指定时间段数据
      * @param startDate 开始时间
-     *        endDate 结束时间
-     *        adcenter 广告中心
+     * @param endDate 结束时间
+     * @param adcenter 广告中心
+     * @param country 国家
+     * @param packagename 包名
+     * @param pageNum 页码
+     * @param pageSize 每页大小
      * @return 结果
      */
     @GetMapping("/getAllDataByDate")
-    public String getAllDataByDate(@RequestParam(value = "startDate",required = false) String startDate,@RequestParam(value = "endDate",required = false) String endDate,
-                                   @RequestParam(value = "adcenter",required = false) String adcenter,@RequestParam(value = "country",required = false) String country,
-                                   @RequestParam(value = "pageNum",required = false,defaultValue = "1") int pageNum,@RequestParam(value = "pageSize",required = false,defaultValue = "100") int pageSize) {
-        return data2025Service.getAllDataByDate(startDate,endDate,adcenter,country,pageNum,pageSize);
+    public String getAllDataByDate(@RequestParam(value = "startDate",required = false) String startDate,
+                                   @RequestParam(value = "endDate",required = false) String endDate,
+                                   @RequestParam(value = "adcenter",required = false) String adcenter,
+                                   @RequestParam(value = "country",required = false) String country,
+                                   @RequestParam(value = "packagename",required = false) String packagename,
+                                   @RequestParam(value = "pageNum",required = false,defaultValue = "1") int pageNum,
+                                   @RequestParam(value = "pageSize",required = false,defaultValue = "100") int pageSize) {
+        return data2025Service.getAllDataByDate(startDate,endDate,adcenter,country,packagename,pageNum,pageSize);
     }
 
     /**
      * 查询指定时间数据
      * @param startDate 开始时间
-     *        adcenter 广告中心
+     * @param adcenter 广告中心
+     * @param country 国家
+     * @param pageNum 页码
+     * @param pageSize 每页大小
      * @return 结果
      */
     @GetMapping("/getDataByDate")
     public String getDataByDate(@RequestParam(value = "startDate",required = false) String startDate,
-                                   @RequestParam(value = "adcenter",required = false) String adcenter,@RequestParam(value = "country",required = false) String country,
-                                   @RequestParam(value = "pageNum",required = false,defaultValue = "1") int pageNum,@RequestParam(value = "pageSize",required = false,defaultValue = "100") int pageSize) {
+                                @RequestParam(value = "adcenter",required = false) String adcenter,
+                                @RequestParam(value = "country",required = false) String country,
+                                @RequestParam(value = "pageNum",required = false,defaultValue = "1") int pageNum,
+                                @RequestParam(value = "pageSize",required = false,defaultValue = "100") int pageSize) {
         return data2025Service.getDataByDate(startDate,adcenter,country,pageNum,pageSize);
     }
 }

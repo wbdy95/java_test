@@ -10,7 +10,7 @@ import com.baomidou.mybatisplus.extension.service.IService;
 */
 public interface Data2025Service extends IService<Data2025> {
 
-    String getAllDataByDate(String startDate, String endDate, String adcenter, String country, int pageNum, int pageSize);
+    String getAllDataByDate(String startDate, String endDate, String adcenter, String country, String packagename, int pageNum, int pageSize);
 
     String getDataByDate(String startDate, String adcenter, String country, int pageNum, int pageSize);
 }

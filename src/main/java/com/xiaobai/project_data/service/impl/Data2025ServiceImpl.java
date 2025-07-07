@@ -32,7 +32,7 @@ public class Data2025ServiceImpl extends ServiceImpl<Data2025Mapper, Data2025>
         implements Data2025Service{
 
     @Override
-    public String getAllDataByDate(String startDate, String endDate, String adcenter, String country, int pageNum, int pageSize) {
+    public String getAllDataByDate(String startDate, String endDate, String adcenter, String country, String packagename, int pageNum, int pageSize) {
         LambdaQueryWrapper<Data2025> queryWrapper = new LambdaQueryWrapper<>();
 
         try {
@@ -52,6 +52,9 @@ public class Data2025ServiceImpl extends ServiceImpl<Data2025Mapper, Data2025>
                 }
                 if(country!=null&&!country.isEmpty()){
                     queryWrapper.eq(Data2025::getCountry,country);
+                }
+                if(packagename!=null&&!packagename.isEmpty()){
+                    queryWrapper.eq(Data2025::getPackagename,packagename);
                 }
                 queryWrapper.orderByDesc(Data2025::getValuemicros);
 
@@ -93,6 +96,9 @@ public class Data2025ServiceImpl extends ServiceImpl<Data2025Mapper, Data2025>
             }
             if(country!=null&&!country.isEmpty()){
                 queryWrapper.eq(Data2025::getCountry,country);
+            }
+            if(packagename!=null&&!packagename.isEmpty()){
+                queryWrapper.eq(Data2025::getPackagename,packagename);
             }
             queryWrapper.orderByDesc(Data2025::getValuemicros);
             if (pageNum != 0 && pageSize != 0) {
