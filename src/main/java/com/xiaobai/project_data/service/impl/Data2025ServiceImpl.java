@@ -92,7 +92,7 @@ public class Data2025ServiceImpl extends ServiceImpl<Data2025Mapper, Data2025>
             if (startDate != null && !startDate.isEmpty()&&endDate != null && !endDate.isEmpty()) {
                 LocalDate localStartDate = DateUtils.parseLocalDate(startDate);
                 LocalDate localEndDate = DateUtils.parseLocalDate(endDate);
-                // 查询当天所有数据
+                // 查询指定时间段数据
                 queryWrapper.between(
                         Data2025::getDetatime,
                         java.sql.Date.valueOf(localStartDate),

@@ -56,7 +56,7 @@ public class Data2025 {
      */
     @TableField(value = "adcenter")
     private String adcenter;
-//°üÃû
+//åŒ…å
     @TableField(value = "packagename")
     private String packagename;
     /**
