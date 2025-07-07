@@ -10,8 +10,7 @@ import com.xiaobai.project_data.domain.ReturnData;
 import com.xiaobai.project_data.service.Data2025Service;
 import com.xiaobai.project_data.mapper.Data2025Mapper;
 import com.xiaobai.project_data.utils.DateUtils;
-import java.text.ParseException;
-import java.time.Instant;
+import com.alibaba.fastjson.JSONObject;
 import java.time.LocalDate;
 import java.util.Date;
 import java.util.HashMap;
@@ -72,12 +71,22 @@ public class Data2025ServiceImpl extends ServiceImpl<Data2025Mapper, Data2025>
                     data.setTotal(total);
                     data.setTotalPage(totalPage);
 
-                    ObjectMapper objectMapper = new ObjectMapper();
-                    return objectMapper.writeValueAsString(data);
+                    JSONObject object = new JSONObject();
+                    object.put("info",data);
+                    object.put("code", Integer.parseInt("200"));
+                    object.put("msg", "OK");
+                    object.put("success", true);
+                    object.put("time", System.currentTimeMillis());
+                    return object.toString();
                 }
             }
-        } catch (JsonProcessingException ex) {
-            throw new RuntimeException(ex);
+        } catch (Exception e) {
+            JSONObject object = new JSONObject();
+            object.put("msg", "查询失败！");
+            object.put("success", false);
+            object.put("code", Integer.parseInt("400"));
+            object.put("time", System.currentTimeMillis());
+            return object.toString();
         }
         try {
             if (startDate != null && !startDate.isEmpty()&&endDate != null && !endDate.isEmpty()) {
@@ -115,15 +124,28 @@ public class Data2025ServiceImpl extends ServiceImpl<Data2025Mapper, Data2025>
                 data.setData(records);
                 data.setTotal(total);
                 data.setTotalPage(totalPage);
-
-                ObjectMapper objectMapper = new ObjectMapper();
-
-                return objectMapper.writeValueAsString(data);
+                JSONObject object = new JSONObject();
+                object.put("info",data);
+                object.put("code", Integer.parseInt("200"));
+                object.put("msg", "OK");
+                object.put("success", true);
+                object.put("time", System.currentTimeMillis());
+                return object.toString();
             }
-        } catch (JsonProcessingException e) {
-            throw new RuntimeException(e);
+        } catch (Exception e) {
+            JSONObject object = new JSONObject();
+            object.put("msg", "查询失败！");
+            object.put("success", false);
+            object.put("code", Integer.parseInt("400"));
+            object.put("time", System.currentTimeMillis());
+            return object.toString();
         }
-        return "查询失败！";
+        JSONObject object = new JSONObject();
+        object.put("msg", "查询失败！");
+        object.put("success", false);
+        object.put("code", Integer.parseInt("400"));
+        object.put("time", System.currentTimeMillis());
+        return object.toString();
     }
 
 
@@ -167,9 +189,13 @@ public class Data2025ServiceImpl extends ServiceImpl<Data2025Mapper, Data2025>
                     data.setTotal(total);
                     data.setTotalPage(totalPage);
 
-                    ObjectMapper objectMapper = new ObjectMapper();
-
-                    return objectMapper.writeValueAsString(data);
+                    JSONObject object = new JSONObject();
+                    object.put("info",data);
+                    object.put("code", Integer.parseInt("200"));
+                    object.put("msg", "OK");
+                    object.put("success", true);
+                    object.put("time", System.currentTimeMillis());
+                    return object.toString();
                 }
             }
             LocalDate localDate = DateUtils.parseLocalDate(startDate);
@@ -201,14 +227,28 @@ public class Data2025ServiceImpl extends ServiceImpl<Data2025Mapper, Data2025>
                 data.setTotal(total);
                 data.setTotalPage(totalPage);
 
-                ObjectMapper objectMapper = new ObjectMapper();
-
-                return objectMapper.writeValueAsString(data);
+                JSONObject object = new JSONObject();
+                object.put("info",data);
+                object.put("code", Integer.parseInt("200"));
+                object.put("msg", "OK");
+                object.put("success", true);
+                object.put("time", System.currentTimeMillis());
+                return object.toString();
             }
-        } catch (JsonProcessingException e) {
-            throw new RuntimeException(e);
+        } catch (Exception e) {
+            JSONObject object = new JSONObject();
+            object.put("msg", "查询失败！");
+            object.put("success", false);
+            object.put("code", Integer.parseInt("400"));
+            object.put("time", System.currentTimeMillis());
+            return object.toString();
         }
-        return "查询失败！";
+        JSONObject object = new JSONObject();
+        object.put("msg", "查询失败！");
+        object.put("success", false);
+        object.put("code", Integer.parseInt("400"));
+        object.put("time", System.currentTimeMillis());
+        return object.toString();
     }
 
 }

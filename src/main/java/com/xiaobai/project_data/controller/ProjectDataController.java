@@ -4,7 +4,7 @@ import com.xiaobai.project_data.domain.Data2025;
 import com.xiaobai.project_data.service.Data2025Service;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
-
+import com.alibaba.fastjson.JSONObject;
 import javax.annotation.Resource;
 import java.nio.charset.StandardCharsets;
 import java.util.Date;
@@ -27,15 +27,30 @@ public class ProjectDataController {
     public String insert(@RequestBody Data2025 data2025) {
         String gaid = data2025.getGaid() ;
         if(StringUtils.isEmpty(gaid)){
-            return "添加失败！gaid不为空";
+            JSONObject object = new JSONObject();
+            object.put("msg", "添加失败！gaid不能为空");
+            object.put("success", false);
+            object.put("code", Integer.parseInt("400"));
+            object.put("time", System.currentTimeMillis());
+            return object.toString();
         }
         else{
             boolean save = data2025Service.save(data2025);
             data2025.setDetatime(new Date());
             if(save){
-                return "添加成功！";
+                JSONObject object = new JSONObject();
+                object.put("msg", "添加成功！");
+                object.put("success", false);
+                object.put("code", Integer.parseInt("200"));
+                object.put("time", System.currentTimeMillis());
+                return object.toString();
             }
-            return "添加失败！";
+            JSONObject object = new JSONObject();
+            object.put("msg", "添加失败！");
+            object.put("success", false);
+            object.put("code", Integer.parseInt("400"));
+            object.put("time", System.currentTimeMillis());
+            return object.toString();
         }
     }
 
