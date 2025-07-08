@@ -14,8 +14,9 @@ public class WebConfig implements WebMvcConfigurer {
 
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
-        // 对/data路径下的所有接口进行验证
+        // 对/data路径下的所有接口进行验证，但排除管理接口
         registry.addInterceptor(apiKeyInterceptor)
-                .addPathPatterns("/data/**");
+                .addPathPatterns("/data/**")
+                .excludePathPatterns("/admin/**"); // 管理接口可以单独保护
     }
 }

@@ -23,8 +23,9 @@ public class ProjectDataController {
     public String insert(@Valid @RequestBody Data2025 data2025) {
         try {
             data2025.setDetatime(new Date());
-            boolean save = data2025Service.save(data2025);
 
+            boolean save = data2025Service.save(data2025);
+            //System.out.println(, "\n");
             if (save) {
                 JSONObject object = new JSONObject();
                 object.put("msg", "添加成功！");
