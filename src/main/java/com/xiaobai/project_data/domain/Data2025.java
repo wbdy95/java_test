@@ -10,7 +10,7 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
 import javax.validation.constraints.NotBlank;
 
-@TableName(value ="data_2025")
+@TableName(value ="data_2024")
 @Data
 public class Data2025 {
 
